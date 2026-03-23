@@ -4,91 +4,39 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- ═══════════════════════════════════════════════════════════════════════
-         SEO — Atualize todas as informações abaixo para o cliente
-         Dica: copie os valores de src/config/client.js para manter consistência
-    ═══════════════════════════════════════════════════════════════════════════ -->
-
-    <!-- TODO: Título da aba do browser e resultado de busca (50-60 chars) -->
-    <title>Nome da Marca | Descrição Curta do Serviço</title>
-
-    <!-- TODO: Descrição para Google/Bing (150-160 chars) -->
-    <meta name="description" content="Descrição do site para mecanismos de busca. Inclua o serviço principal e a localização. Ideal: 150-160 caracteres." />
-
-    <!-- TODO: Palavras-chave (separadas por vírgula) -->
-    <meta name="keywords" content="palavra-chave 1, palavra-chave 2, nome da marca" />
-
-    <!-- TODO: Nome do autor/empresa -->
-    <meta name="author" content="Nome da Marca" />
-
+    <title>Unhas Cris Barros | Manicure em Penha, SC</title>
+    <meta name="description" content="Manicure profissional em Penha, SC. Unhas em gel, esmaltação em gel, nail art, spa das mãos e alongamento. Agende com Cris Barros e tenha unhas perfeitas!" />
+    <meta name="keywords" content="manicure em Penha SC, unhas em gel Penha SC, esmaltação em gel Penha, nail art Penha SC, spa das mãos Penha SC, alongamento de unhas Penha, manicure profissional Santa Catarina, Unhas Cris Barros" />
+    <meta name="author" content="Unhas Cris Barros" />
     <meta name="robots" content="index, follow" />
 
-    <!-- TODO: Cole o código de verificação do Google Search Console aqui (ou remova a linha) -->
+    <!-- Google Search Console — preencher quando disponível -->
     <!-- <meta name="google-site-verification" content="SEU_CODIGO_AQUI" /> -->
 
-    <!-- TODO: Ajuste o código de região (BR-SP = São Paulo, BR-SC = Santa Catarina, etc.) -->
-    <meta name="geo.region" content="BR-XX" />
+    <meta name="geo.region" content="BR-SC" />
+    <meta name="geo.placename" content="Penha, Santa Catarina" />
 
-    <!-- TODO: Cidade e estado -->
-    <meta name="geo.placename" content="Cidade, Estado" />
-
-    <!-- ─── Open Graph (Facebook, WhatsApp, LinkedIn) ─────────────────────── -->
+    <!-- ─── Open Graph ─────────────────────────────────────────────────────── -->
     <meta property="og:type" content="website" />
-
-    <!-- TODO: URL completa do site em produção -->
     <meta property="og:url" content="https://seudominio.com.br/" />
-
-    <!-- TODO: Título para compartilhamento social -->
-    <meta property="og:title" content="Nome da Marca | Serviço Principal" />
-
-    <!-- TODO: Descrição para compartilhamento -->
-    <meta property="og:description" content="Descrição atrativa para quando o link for compartilhado em redes sociais." />
-
-    <!-- TODO: Imagem de capa (1200x630px, coloque em public/images/og-image.jpg) -->
+    <meta property="og:title" content="Unhas Cris Barros | Manicure em Penha, SC" />
+    <meta property="og:description" content="Manicure profissional em Penha, SC. Unhas em gel, nail art e spa das mãos com quem entende de beleza." />
     <meta property="og:image" content="https://seudominio.com.br/images/og-image.jpg" />
-
     <meta property="og:locale" content="pt_BR" />
 
     <!-- ─── Twitter Card ───────────────────────────────────────────────────── -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://seudominio.com.br/" />
-    <meta property="twitter:title" content="Nome da Marca | Serviço Principal" />
-    <meta property="twitter:description" content="Descrição atrativa para o Twitter." />
+    <meta property="twitter:title" content="Unhas Cris Barros | Manicure em Penha, SC" />
+    <meta property="twitter:description" content="Manicure profissional em Penha, SC. Unhas em gel, nail art e spa das mãos com quem entende de beleza." />
     <meta property="twitter:image" content="https://seudominio.com.br/images/og-image.jpg" />
 
     <!-- ─── Canonical ─────────────────────────────────────────────────────── -->
-    <!-- TODO: URL canônica (igual ao og:url) -->
     <link rel="canonical" href="https://seudominio.com.br/" />
 
-    <!-- ─── JSON-LD Structured Data (SEO avançado) ───────────────────────── -->
-    <!-- TODO: Preencha todos os campos abaixo com os dados reais do cliente  -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "Nome da Marca",
-      "description": "Descrição do negócio para o Google.",
-      "url": "https://seudominio.com.br",
-      "logo": "https://seudominio.com.br/images/logo.png",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Cidade",
-        "addressRegion": "UF",
-        "addressCountry": "BR"
-      },
-      "areaServed": "Região de Atuação",
-      "email": "contato@exemplo.com",
-      "telephone": "+55-00-00000-0000",
-      "sameAs": [
-        "https://www.youtube.com/@seucanal",
-        "https://www.instagram.com/seuinstagram",
-        "https://www.tiktok.com/@seutiktok"
-      ],
-      "priceRange": "$$"
-    }
-    </script>
+    <!-- JSON-LD gerado dinamicamente por main.jsx via client.js -->
 
-    <!-- Font Awesome for social icons -->
+    <!-- Font Awesome -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -97,8 +45,7 @@
       referrerpolicy="no-referrer"
     />
 
-    <!-- TODO: Substitua pelo favicon do cliente (coloque em public/) -->
-    <link rel="icon" type="image/png" href="/images/logo.png" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
   <body>
     <div id="root"></div>

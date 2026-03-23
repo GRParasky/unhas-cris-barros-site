@@ -2,9 +2,9 @@ import styles from './Footer.module.css'
 import { CLIENT } from '../../../config/client'
 
 const SOCIAL_ICONS = [
-  { href: CLIENT.social.youtube.url,   icon: 'fa-brands fa-youtube',   label: 'YouTube' },
-  { href: CLIENT.social.instagram.url, icon: 'fa-brands fa-instagram', label: 'Instagram' },
-  { href: CLIENT.social.tiktok.url,    icon: 'fa-brands fa-tiktok',    label: 'TikTok' },
+  ...(CLIENT.social.youtube.enabled   ? [{ href: CLIENT.social.youtube.url,   icon: 'fa-brands fa-youtube',   label: 'YouTube' }]   : []),
+  ...(CLIENT.social.instagram.enabled ? [{ href: CLIENT.social.instagram.url, icon: 'fa-brands fa-instagram', label: 'Instagram' }] : []),
+  ...(CLIENT.social.tiktok.enabled    ? [{ href: CLIENT.social.tiktok.url,    icon: 'fa-brands fa-tiktok',    label: 'TikTok' }]    : []),
 ]
 
 // Links do footer derivados do CLIENT — sem hardcode
@@ -17,9 +17,9 @@ const FOOTER_LINKS = {
     { label: 'Contato',   href: '#contact' },
   ],
   Social: [
-    { label: 'YouTube',   href: CLIENT.social.youtube.url,   external: true },
-    { label: 'Instagram', href: CLIENT.social.instagram.url, external: true },
-    { label: 'TikTok',    href: CLIENT.social.tiktok.url,    external: true },
+    ...(CLIENT.social.youtube.enabled   ? [{ label: 'YouTube',   href: CLIENT.social.youtube.url,   external: true }] : []),
+    ...(CLIENT.social.instagram.enabled ? [{ label: 'Instagram', href: CLIENT.social.instagram.url, external: true }] : []),
+    ...(CLIENT.social.tiktok.enabled    ? [{ label: 'TikTok',    href: CLIENT.social.tiktok.url,    external: true }] : []),
   ],
 }
 
@@ -54,8 +54,7 @@ export default function Footer() {
                 className={styles.logoImg}
               />
               <span>
-                {CLIENT.brandNameDisplay.prefix}
-                <span className={styles.logoAccent}>{CLIENT.brandNameDisplay.suffix}</span>
+                {CLIENT.brandNameDisplay.prefix}{CLIENT.brandNameDisplay.separator}<span className={styles.logoAccent}>{CLIENT.brandNameDisplay.suffix}</span>
               </span>
             </a>
             <p className={styles.brandTagline}>{CLIENT.footer.tagline}</p>
@@ -112,10 +111,12 @@ export default function Footer() {
           <p className={styles.copyright}>
             &copy; {currentYear} {CLIENT.brandName}. Todos os direitos reservados.
           </p>
-          <p className={styles.location}>
-            <i className="fa-solid fa-location-dot" aria-hidden="true"></i>
-            {CLIENT.location} — Atendimento no {CLIENT.areaServed}
-          </p>
+          {CLIENT.contact.location.enabled && (
+            <address className={styles.location}>
+              <i className="fa-solid fa-location-dot" aria-hidden="true"></i>
+              {CLIENT.address?.full || CLIENT.location}
+            </address>
+          )}
         </div>
 
         {/* Crédito do desenvolvedor */}

@@ -16,30 +16,24 @@ const INITIAL_FORM = {
 }
 
 const CONTACT_INFO = [
-  {
+  ...(CLIENT.contact.email.enabled ? [{
     icon: 'fa-solid fa-envelope',
     label: 'E-mail',
-    value: CLIENT.email,
-    href: `mailto:${CLIENT.email}`,
-  },
-  {
+    value: CLIENT.contact.email.value,
+    href: `mailto:${CLIENT.contact.email.value}`,
+  }] : []),
+  ...(CLIENT.contact.whatsapp.enabled ? [{
     icon: 'fa-brands fa-whatsapp',
     label: 'WhatsApp',
-    value: CLIENT.whatsappLabel,
-    href: `https://wa.me/${CLIENT.whatsapp}`,
-  },
-  {
+    value: CLIENT.contact.whatsapp.label,
+    href: `https://wa.me/${CLIENT.contact.whatsapp.number}`,
+  }] : []),
+  ...(CLIENT.contact.location.enabled ? [{
     icon: 'fa-solid fa-location-dot',
     label: 'Localização',
-    value: `${CLIENT.location} — Gravações no ${CLIENT.areaServed}`,
+    value: `${CLIENT.location} — ${CLIENT.contact.location.areaLabel} ${CLIENT.areaServed}`,
     href: null,
-  },
-  {
-    icon: 'fa-solid fa-clock',
-    label: 'Prazo de Gravações',
-    value: 'A combinar',
-    href: null,
-  },
+  }] : []),
 ]
 
 function validate(fields) {
@@ -144,15 +138,14 @@ export default function Contact() {
       <div className="container">
         <header className="section-header">
           <h2 id="contact-heading" className="section-title">
-            Solicite um <span className="accent">Orçamento</span>
+            {CLIENT.contact.sectionTitle} <span className="accent">{CLIENT.contact.sectionTitleAccent}</span>
           </h2>
           <p className="section-subtitle">
-            Pronto para levar seu projeto a novos horizontes? Conta pra gente
-            sobre sua visão e retornamos em até 24 horas.
+            {CLIENT.contact.sectionSubtitle}
           </p>
         </header>
 
-        <div className={styles.contactGrid}>
+        <div className={`${styles.contactGrid}${!CLIENT.contact.form.enabled ? ` ${styles.contactGridCentered}` : ''}`}>
           {/* Informações de contato */}
           <aside className={styles.contactInfo} aria-label="Informações de contato">
             <div className={styles.infoHeader}>
@@ -183,21 +176,29 @@ export default function Contact() {
               ))}
             </ul>
 
-            <div className={styles.socialLinks} aria-label="Links das redes sociais">
-              <a href={CLIENT.social.youtube.url} target="_blank" rel="noopener noreferrer" aria-label="YouTube" className={styles.socialLink}>
-                <i className="fa-brands fa-youtube" aria-hidden="true"></i>
-              </a>
-              <a href={CLIENT.social.instagram.url} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className={styles.socialLink}>
-                <i className="fa-brands fa-instagram" aria-hidden="true"></i>
-              </a>
-              <a href={CLIENT.social.tiktok.url} target="_blank" rel="noopener noreferrer" aria-label="TikTok" className={styles.socialLink}>
-                <i className="fa-brands fa-tiktok" aria-hidden="true"></i>
-              </a>
-            </div>
+            {[CLIENT.social.youtube, CLIENT.social.instagram, CLIENT.social.tiktok].filter(s => s.enabled).length >= 2 && (
+              <div className={styles.socialLinks} aria-label="Links das redes sociais">
+                {CLIENT.social.youtube.enabled && (
+                  <a href={CLIENT.social.youtube.url} target="_blank" rel="noopener noreferrer" aria-label="YouTube" className={styles.socialLink}>
+                    <i className="fa-brands fa-youtube" aria-hidden="true"></i>
+                  </a>
+                )}
+                {CLIENT.social.instagram.enabled && (
+                  <a href={CLIENT.social.instagram.url} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className={styles.socialLink}>
+                    <i className="fa-brands fa-instagram" aria-hidden="true"></i>
+                  </a>
+                )}
+                {CLIENT.social.tiktok.enabled && (
+                  <a href={CLIENT.social.tiktok.url} target="_blank" rel="noopener noreferrer" aria-label="TikTok" className={styles.socialLink}>
+                    <i className="fa-brands fa-tiktok" aria-hidden="true"></i>
+                  </a>
+                )}
+              </div>
+            )}
           </aside>
 
           {/* Formulário de contato */}
-          <div className={styles.formWrapper}>
+          {CLIENT.contact.form.enabled && <div className={styles.formWrapper}>
             {submitState === 'success' ? (
               <div className={styles.successMessage} role="alert">
                 <div className={styles.successIcon} aria-hidden="true">
@@ -390,8 +391,21 @@ export default function Contact() {
                 </button>
               </form>
             )}
-          </div>
+          </div>}
         </div>
+
+        {CLIENT.contact.map?.enabled && (
+          <div className={styles.mapWrapper}>
+            <iframe
+              src={`https://maps.google.com/maps?q=${encodeURIComponent(CLIENT.address.full)}&output=embed&hl=pt-BR`}
+              className={styles.mapFrame}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title={`Localização: ${CLIENT.contact.map.address}`}
+            />
+          </div>
+        )}
       </div>
     </section>
   )

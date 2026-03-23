@@ -57,8 +57,7 @@ export default function Navbar() {
             className={styles.logoImg}
           />
           <span className={styles.logoText}>
-            {CLIENT.brandNameDisplay.prefix}
-            <span className={styles.logoAccent}>{CLIENT.brandNameDisplay.suffix}</span>
+            {CLIENT.brandNameDisplay.prefix}{CLIENT.brandNameDisplay.separator}<span className={styles.logoAccent}>{CLIENT.brandNameDisplay.suffix}</span>
           </span>
         </a>
 
@@ -83,9 +82,10 @@ export default function Navbar() {
 
         {/* Botão CTA */}
         <a
-          href="#contact"
+          href={CLIENT.contact.form.enabled ? '#contact' : CLIENT.contact.form.externalUrl}
           className={styles.ctaButton}
-          onClick={(e) => handleNavClick(e, '#contact')}
+          onClick={(e) => CLIENT.contact.form.enabled && handleNavClick(e, '#contact')}
+          {...(!CLIENT.contact.form.enabled && { target: '_blank', rel: 'noopener noreferrer' })}
         >
           {CLIENT.nav.ctaLabel}
         </a>
@@ -128,10 +128,11 @@ export default function Navbar() {
           ))}
           <li>
             <a
-              href="#contact"
+              href={CLIENT.contact.form.enabled ? '#contact' : CLIENT.contact.form.externalUrl}
               className={styles.mobileCta}
-              onClick={(e) => handleNavClick(e, '#contact')}
+              onClick={(e) => CLIENT.contact.form.enabled && handleNavClick(e, '#contact')}
               tabIndex={isMenuOpen ? 0 : -1}
+              {...(!CLIENT.contact.form.enabled && { target: '_blank', rel: 'noopener noreferrer' })}
             >
               {CLIENT.nav.ctaLabel}
             </a>

@@ -1,5 +1,8 @@
 .about {
   background: var(--color-bg-secondary);
+  --color-text-primary:   var(--color-text-on-bg-secondary);
+  --color-text-secondary: color-mix(in srgb, var(--color-text-on-bg-secondary) 70%, transparent);
+  --color-text-muted:     color-mix(in srgb, var(--color-text-on-bg-secondary) 40%, transparent);
   position: relative;
   overflow: hidden;
 }
@@ -53,10 +56,11 @@
 }
 
 .titleAccent {
-  background: linear-gradient(135deg, var(--color-accent-light), #7aabd4);
+  background: linear-gradient(135deg, #f4b8d4 0%, #fde8f2 50%, #e8a0c4 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.4));
 }
 
 .description {
@@ -117,6 +121,9 @@
 }
 
 .serviceCard {
+  /* Fundo claro → texto escuro, sobrescreve o override da seção */
+  --color-text-primary:   #3a1525;
+  --color-text-secondary: rgba(58, 21, 37, 0.72);
   background: var(--color-bg-card);
   border: 1px solid var(--color-border);
   border-radius: var(--border-radius-lg);

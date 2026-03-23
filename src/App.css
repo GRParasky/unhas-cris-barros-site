@@ -14,43 +14,24 @@
    Ferramenta de paleta: https://coolors.co
    ───────────────────────────────────────────────────────────────────────────── */
 :root {
-  /* TODO: Fundo principal da página */
-  --color-bg: #0f1117;
-
-  /* TODO: Fundo levemente mais claro (seções alternadas) */
-  --color-bg-secondary: #161b22;
-
-  /* TODO: Fundo de cards (com transparência) */
-  --color-bg-card: rgba(15, 17, 23, 0.8);
-
-  /* TODO: Fundo de cards no hover */
-  --color-bg-card-hover: rgba(80, 100, 140, 0.15);
-
-  /* TODO: Superfície de elementos elevados */
-  --color-surface: #1c2130;
-
-  /* TODO: Cor das bordas */
-  --color-border: rgba(80, 100, 140, 0.3);
-
-  /* TODO: Cor de destaque (accent) — usada em botões, links ativos, títulos */
-  --color-accent: #3d5a80;
-
-  /* TODO: Accent ao passar o mouse */
-  --color-accent-hover: #4d6d96;
-
-  /* TODO: Accent mais claro — usado em textos com destaque */
-  --color-accent-light: #6b8fba;
-
-  /* TODO: Cor do texto principal */
-  --color-text-primary: #f0f0ee;
-
-  /* TODO: Cor do texto secundário (subtítulos, labels) */
-  --color-text-secondary: rgba(240, 240, 238, 0.7);
-
-  /* TODO: Cor do texto mais apagado (placeholders, datas) */
-  --color-text-muted: rgba(240, 240, 238, 0.4);
-
-  --color-white: #f0f0ee;
+  /* Valores espelho do client.js — atualize aqui sempre que mudar o theme lá */
+  --color-bg:                    #CEABBC;
+  --color-bg-secondary:          #9C5779;
+  --color-bg-card:               #CEABBC;
+  --color-bg-card-hover:         #664455;
+  --color-surface:               #1c2130;
+  --color-border:                rgba(80, 100, 140, 0.3);
+  --color-accent:                #9C5779;
+  --color-accent-hover:          #4d6d96;
+  --color-accent-light:          #664455;
+  --color-text-primary:          #3a1525;
+  --color-text-secondary:        rgba(58, 21, 37, 0.72);
+  --color-text-muted:            rgba(58, 21, 37, 0.45);
+  --color-white:                 #f0f0ee;
+  --color-text-on-bg-secondary:  #f0f0ee;
+  --color-navbar-scrolled:       #9C5779;
+  --color-hero-overlay:          rgba(4, 20, 41, 0.72);
+  --shadow-glow:                 0 0 20px #9C577966;
 
   /* TODO: Fontes — substitua por Google Fonts se quiser tipografia customizada */
   /* Ex: @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap') */

@@ -1,5 +1,8 @@
 .contact {
   background: var(--color-bg-secondary);
+  --color-text-primary:   var(--color-text-on-bg-secondary);
+  --color-text-secondary: color-mix(in srgb, var(--color-text-on-bg-secondary) 70%, transparent);
+  --color-text-muted:     color-mix(in srgb, var(--color-text-on-bg-secondary) 40%, transparent);
   position: relative;
 }
 
@@ -19,6 +22,12 @@
   grid-template-columns: 1fr 1.6fr;
   gap: var(--spacing-2xl);
   align-items: start;
+}
+
+.contactGridCentered {
+  grid-template-columns: 1fr;
+  max-width: 560px;
+  margin-inline: auto;
 }
 
 /* ===========================
@@ -353,6 +362,21 @@ a.infoValue:hover {
   border-color: var(--color-accent);
   color: var(--color-accent-light);
   background: rgba(48, 81, 118, 0.1);
+}
+
+/* ===== Map ===== */
+.mapWrapper {
+  margin-top: var(--spacing-2xl);
+  border-radius: var(--border-radius-xl);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+}
+
+.mapFrame {
+  width: 100%;
+  height: 320px;
+  display: block;
+  border: none;
 }
 
 /* ===== Responsive ===== */

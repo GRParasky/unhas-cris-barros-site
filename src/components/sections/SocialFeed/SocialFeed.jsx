@@ -18,7 +18,7 @@ import { CLIENT } from '../../../config/client'
 
 const PLATFORMS = [
   // YouTube: visível se habilitado no config
-  ...(CLIENT.socialFeed.platforms.youtube
+  ...(CLIENT.socialFeed.platforms.youtube && CLIENT.social.youtube.enabled
     ? [{
         id: 'youtube',
         label: 'YouTube',
@@ -39,7 +39,7 @@ const PLATFORMS = [
   //     }]
   //   : []),
   // TikTok: visível se habilitado no config E houver vídeos configurados
-  ...(CLIENT.socialFeed.platforms.tiktok && CLIENT.tiktokVideos.length > 0
+  ...(CLIENT.socialFeed.platforms.tiktok && CLIENT.social.tiktok.enabled && CLIENT.tiktokVideos.length > 0
     ? [{
         id: 'tiktok',
         label: 'TikTok',
@@ -156,6 +156,8 @@ export default function SocialFeed() {
   const [activePlatformIndex, setActivePlatformIndex] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
   const { videos: youtubeVideos, loading: ytLoading, error: ytError } = useYouTubeVideos()
+
+  if (!CLIENT.socialFeed.enabled || PLATFORMS.length === 0) return null
 
   const activePlatform = PLATFORMS[activePlatformIndex]
 

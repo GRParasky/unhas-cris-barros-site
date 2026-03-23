@@ -17,23 +17,19 @@ export default function Hero() {
   }, [])
 
   const handleCtaClick = (e) => {
+    if (!CLIENT.contact.form.enabled && CLIENT.contact.form.externalUrl) return
     e.preventDefault()
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
   }
 
-  const handleReelClick = (e) => {
-    e.preventDefault()
-    document.getElementById('social')?.scrollIntoView({ behavior: 'smooth' })
-  }
-
-  return (
+return (
     <section
       id="hero"
       className={styles.hero}
       aria-label={`Hero - ${CLIENT.brandName}`}
     >
-      {/* Vídeo de fundo */}
-      {CLIENT.hero.videoBg && (
+      {/* Fundo: vídeo, imagem ou mock */}
+      {CLIENT.hero.videoBg ? (
         <>
           <video
             className={styles.videoBg}
@@ -46,6 +42,18 @@ export default function Hero() {
           />
           <div className={styles.videoOverlay} aria-hidden="true"></div>
         </>
+      ) : CLIENT.hero.imageBg ? (
+        <>
+          <img
+            className={styles.videoBg}
+            src={`${import.meta.env.BASE_URL}${CLIENT.hero.imageBg}`}
+            alt=""
+            aria-hidden="true"
+          />
+          <div className={styles.videoOverlay} aria-hidden="true"></div>
+        </>
+      ) : (
+        <div className={styles.heroBgMock} aria-hidden="true"></div>
       )}
 
       {/* Partículas animadas */}
@@ -63,10 +71,12 @@ export default function Hero() {
           />
         </div>
 
-        <div className={styles.badge}>
-          <i className="fa-solid fa-circle-dot" aria-hidden="true"></i>
-          <span>{CLIENT.hero.badge}</span>
-        </div>
+        {CLIENT.hero.badgeEnabled && (
+          <div className={styles.badge}>
+            <i className="fa-solid fa-circle-dot" aria-hidden="true"></i>
+            <span>{CLIENT.hero.badge}</span>
+          </div>
+        )}
 
         <h1 className={styles.title}>
           <span className={styles.titleLine1}>{CLIENT.hero.titleLine1}</span>
@@ -80,27 +90,18 @@ export default function Hero() {
 
         <div className={styles.ctaGroup}>
           <a
-            href="#contact"
+            href={CLIENT.contact.form.enabled ? '#contact' : CLIENT.contact.form.externalUrl}
             className={styles.ctaPrimary}
             onClick={handleCtaClick}
+            {...(!CLIENT.contact.form.enabled && { target: '_blank', rel: 'noopener noreferrer' })}
           >
             <i className="fa-solid fa-paper-plane" aria-hidden="true"></i>
             {CLIENT.nav.ctaLabel}
           </a>
-          <a
-            href="#videos"
-            className={styles.ctaSecondary}
-            onClick={handleReelClick}
-          >
-            <span className={styles.playIcon} aria-hidden="true">
-              <i className="fa-solid fa-play"></i>
-            </span>
-            Ver Feeds
-          </a>
         </div>
 
         {/* Estatísticas */}
-        <div className={styles.stats} role="list" aria-label="Nossas conquistas">
+        {CLIENT.hero.statsEnabled && <div className={styles.stats} role="list" aria-label="Nossas conquistas">
           {CLIENT.hero.stats.map((stat, index) => (
             <>
               {index > 0 && (
@@ -112,7 +113,7 @@ export default function Hero() {
               </div>
             </>
           ))}
-        </div>
+        </div>}
       </div>
 
       {/* Indicador de scroll */}

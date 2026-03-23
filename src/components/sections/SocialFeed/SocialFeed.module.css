@@ -2,6 +2,9 @@
 .socialFeed {
   padding: var(--spacing-3xl) 0;
   background: var(--color-bg-secondary);
+  --color-text-primary:   var(--color-text-on-bg-secondary);
+  --color-text-secondary: color-mix(in srgb, var(--color-text-on-bg-secondary) 70%, transparent);
+  --color-text-muted:     color-mix(in srgb, var(--color-text-on-bg-secondary) 40%, transparent);
   position: relative;
 }
 
