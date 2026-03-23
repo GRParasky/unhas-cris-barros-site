@@ -38,8 +38,8 @@ const schema = {
   name: CLIENT.brandName,
   description: CLIENT.seoDescription,
   url: CLIENT.siteUrl,
-  logo: `${CLIENT.siteUrl}${CLIENT.logoUrl}`,
-  image: `${CLIENT.siteUrl}${CLIENT.logoUrl}`,
+  logo: `${CLIENT.siteUrl}/${CLIENT.logoUrl}`,
+  image: `${CLIENT.siteUrl}/${CLIENT.logoUrl}`,
   telephone: `+${CLIENT.contact.whatsapp.number}`,
   address: {
     '@type': 'PostalAddress',

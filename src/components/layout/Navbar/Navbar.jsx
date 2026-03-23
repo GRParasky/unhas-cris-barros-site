@@ -52,7 +52,7 @@ export default function Navbar() {
           aria-label={`${CLIENT.brandName} - Voltar ao topo`}
         >
           <img
-            src={CLIENT.logoUrl}
+            src={`${import.meta.env.BASE_URL}${CLIENT.logoUrl}`}
             alt={CLIENT.logoAlt}
             className={styles.logoImg}
           />

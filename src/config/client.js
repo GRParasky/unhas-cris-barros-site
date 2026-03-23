@@ -94,7 +94,7 @@ export const CLIENT = {
   // TODO: Coloque o arquivo de logo em public/images/ e ajuste o caminho.
   // Use URL externa (https://...) ou path local ('/images/logo.png').
   // O mesmo logo é usado na Navbar, Hero e Footer.
-  logoUrl: '/images/logo.jpeg',
+  logoUrl: 'images/logo.jpeg',
   logoAlt: 'Unhas Cris Barros',
 
 
@@ -183,7 +183,7 @@ export const CLIENT = {
 
     // TODO: Caminho da imagem de fundo (relativo a /public). Usado quando videoBg: false.
     // Ex: 'images/hero-bg.jpg'. Deixe null para usar apenas a cor de fundo.
-    imageBg: "public/images/bg-image-teste.png",
+    imageBg: "images/bg-image-teste.png",
   },
 
 

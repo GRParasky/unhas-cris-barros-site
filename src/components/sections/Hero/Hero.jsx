@@ -66,7 +66,7 @@ return (
       <div className={`container ${styles.heroContent}`}>
         <div className={styles.heroLogo} aria-hidden="true">
           <img
-            src={CLIENT.logoUrl}
+            src={`${import.meta.env.BASE_URL}${CLIENT.logoUrl}`}
             alt={CLIENT.logoAlt}
           />
         </div>
