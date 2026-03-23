@@ -1,0 +1,483 @@
+/* ===== Section ===== */
+.socialFeed {
+  padding: var(--spacing-3xl) 0;
+  background: var(--color-bg-secondary);
+  position: relative;
+}
+
+/* ===== Platform Switcher ===== */
+.switcherWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-xl);
+}
+
+.arrowBtn {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.arrowBtn:hover {
+  background: rgba(48, 81, 118, 0.2);
+  border-color: rgba(48, 81, 118, 0.6);
+  color: var(--color-text-primary);
+  transform: scale(1.1);
+}
+
+.tabsRow {
+  display: flex;
+  gap: var(--spacing-xs);
+}
+
+.platformTab {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.25rem;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-xl);
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  white-space: nowrap;
+}
+
+.platformTab:hover {
+  color: var(--color-text-primary);
+  border-color: rgba(48, 81, 118, 0.5);
+}
+
+.platformTabActive {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  transform: translateY(-1px);
+}
+
+/* ===== Fade Animation ===== */
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fadeIn {
+  animation: fadeSlideIn 0.3s ease forwards;
+}
+
+.fadeOut {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* ===== Shared Grid ===== */
+.contentGrid {
+  margin-bottom: var(--spacing-xl);
+}
+
+/* ===== YouTube Grid ===== */
+.grid_youtube {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-md);
+}
+
+.ytCard {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.ytCard:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 0, 0, 0.4);
+  box-shadow: 0 8px 32px rgba(255, 0, 0, 0.12);
+}
+
+.ytThumbLink {
+  display: block;
+}
+
+.ytThumbWrapper {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.ytThumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.ytCard:hover .ytThumb {
+  transform: scale(1.05);
+}
+
+.playOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.ytCard:hover .playOverlay {
+  opacity: 1;
+}
+
+.playOverlay i {
+  font-size: 2.5rem;
+  color: #fff;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.6));
+}
+
+.ytMeta {
+  padding: 0.875rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.ytTitle {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.ytStats {
+  display: flex;
+  gap: 0.875rem;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.ytStats i {
+  margin-right: 0.2rem;
+}
+
+/* ===== Instagram Grid ===== */
+.grid_instagram {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.625rem;
+}
+
+.igCard {
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  transition: transform var(--transition-fast);
+}
+
+.igCard:hover {
+  transform: scale(1.02);
+}
+
+.igLink {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.igThumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.igCard:hover .igThumb {
+  transform: scale(1.06);
+}
+
+.igOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, transparent 55%);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0.875rem;
+  gap: 0.3rem;
+}
+
+.igCard:hover .igOverlay {
+  opacity: 1;
+}
+
+.igCaption {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.3;
+}
+
+.igStats {
+  display: flex;
+  gap: 0.75rem;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.igStats i {
+  margin-right: 0.2rem;
+  color: #E1306C;
+}
+
+/* ===== TikTok Grid ===== */
+.grid_tiktok {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-md);
+}
+
+.ttCard {
+  flex: 0 0 auto;
+  height: min(68vh, 580px);
+  aspect-ratio: 9 / 16;
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  background: #111;
+  border: 1px solid var(--color-border);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.ttCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+}
+
+.ttLink {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.ttThumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--transition-slow);
+}
+
+.ttCard:hover .ttThumb {
+  transform: scale(1.04);
+}
+
+.ttPlaceholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #111 0%, #1a1a2e 100%);
+}
+
+.ttOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background: rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.ttCard:hover .ttOverlay {
+  opacity: 1;
+}
+
+.ttPlayIcon {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  color: #000;
+}
+
+.ttCta {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.04em;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+}
+
+/* ===== CTA ===== */
+.ctaWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.ctaLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.75rem 2rem;
+  border-radius: var(--border-radius-xl);
+  color: #fff;
+  font-size: 0.925rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), filter var(--transition-fast);
+  box-shadow: var(--shadow-md);
+}
+
+.ctaLink:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.12);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ===== Skeleton Loading ===== */
+@keyframes shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+.skeletonThumb {
+  aspect-ratio: 16 / 9;
+  background: linear-gradient(90deg, var(--color-bg-card) 25%, rgba(48,81,118,0.15) 50%, var(--color-bg-card) 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.4s infinite linear;
+}
+
+.skeletonLine {
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--color-bg-card) 25%, rgba(48,81,118,0.15) 50%, var(--color-bg-card) 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.4s infinite linear;
+}
+
+.skeletonTitle {
+  height: 14px;
+  width: 85%;
+  margin-bottom: 0.4rem;
+}
+
+.skeletonMeta {
+  height: 11px;
+  width: 55%;
+}
+
+/* ===== Feed Error ===== */
+.feedError {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: var(--spacing-xl);
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+}
+
+.feedError i {
+  font-size: 1.25rem;
+  color: rgba(255, 80, 80, 0.7);
+}
+
+.feedError a {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .grid_youtube {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid_instagram {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid_tiktok {
+    flex-wrap: wrap;
+  }
+
+  .ttCard {
+    height: min(60vh, 460px);
+  }
+
+  .tabsRow {
+    gap: 0.375rem;
+  }
+
+  .platformTab {
+    padding: 0.45rem 0.875rem;
+    font-size: 0.82rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid_youtube {
+    grid-template-columns: 1fr;
+  }
+
+  .grid_instagram {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ttCard {
+    height: min(65vh, 500px);
+  }
+
+  .switcherWrapper {
+    gap: 0.375rem;
+  }
+
+  .arrowBtn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .platformTab span {
+    display: none;
+  }
+
+  .platformTab {
+    padding: 0.5rem 0.75rem;
+  }
+}
