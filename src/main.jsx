@@ -8,7 +8,7 @@ import { CLIENT } from './config/client'
 document.title = CLIENT.tab.title
 
 const faviconLink = document.querySelector('link[rel="icon"]')
-if (faviconLink) faviconLink.href = CLIENT.tab.faviconPath
+if (faviconLink) faviconLink.href = `${import.meta.env.BASE_URL}${CLIENT.tab.faviconPath}`
 
 // ─── Paleta de cores ──────────────────────────────────────────────────────
 const t = CLIENT.theme

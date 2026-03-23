@@ -14,7 +14,7 @@ export const CLIENT = {
   tab: {
     title:       'Unhas Cris Barros | Manicure em Penha, SC',
     // TODO: Caminho do favicon (relativo a /public). Use um SVG ou PNG em public/.
-    faviconPath: '/favicon.svg',
+    faviconPath: 'favicon.svg',
   },
 
 
@@ -317,7 +317,7 @@ export const CLIENT = {
 
   // ─── SEO ──────────────────────────────────────────────────────────────────
   // TODO: URL completa do site em produção (sem barra no final)
-  siteUrl: 'https://seudominio.com.br',
+  siteUrl: 'https://grparasky.github.io/unhas-cris-barros-site',
 
   // TODO: Descrição para mecanismos de busca (ideal: 150-160 caracteres)
   seoDescription: 'Manicure profissional em Penha, SC. Unhas em gel, esmaltação em gel, nail art, spa das mãos e alongamento. Agende com Cris Barros e tenha unhas perfeitas!',
